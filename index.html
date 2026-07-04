@@ -3,208 +3,201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>W27 Kuala Lumpur Guides</title>
+  <title>W27 Travel Files</title>
   <style>
     :root{
-      --ink:#241914;
-      --muted:#75645b;
-      --paper:#fffaf2;
-      --card:#fffdf8;
-      --line:#ead8bf;
-      --spice:#c84b31;
-      --gold:#dfa33c;
-      --leaf:#2f7d55;
-      --sky:#285d86;
-      --shadow:0 24px 70px rgba(69,39,20,.18);
-      --soft:0 14px 34px rgba(69,39,20,.10);
+      --bg:#0f1117;
+      --panel:#161b22;
+      --panel-2:#0d1117;
+      --text:#e6edf3;
+      --muted:#8b949e;
+      --line:#30363d;
+      --line-soft:#21262d;
+      --accent:#58a6ff;
+      --green:#3fb950;
+      --hover:#1f6feb22;
+      --danger:#f85149;
+      --shadow:0 18px 55px rgba(0,0,0,.36);
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      min-height:100vh;
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 12% 5%, rgba(223,163,60,.34), transparent 30%),
-        radial-gradient(circle at 88% 0%, rgba(200,75,49,.22), transparent 34%),
-        linear-gradient(145deg,#fff2dc 0%,#fffaf2 46%,#fff4e4 100%);
+      background:var(--bg);
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      font-size:15px;
     }
-    body:before{
-      content:"";
-      position:fixed;inset:0;pointer-events:none;opacity:.32;
-      background-image:linear-gradient(rgba(120,75,35,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,75,35,.08) 1px,transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom,#000,transparent 78%);
-    }
-    a{color:inherit}
+    a{color:inherit;text-decoration:none}
     .gate{
-      position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:22px;
-      background:linear-gradient(145deg,rgba(36,25,20,.96),rgba(90,42,24,.94));
-      color:#fff7e9;
+      position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:22px;
+      background:radial-gradient(circle at 50% 0%,#1f2937 0,#0d1117 55%,#05070a 100%);
     }
     .gate[hidden]{display:none!important}
     .gate-card{
-      width:min(460px,100%);text-align:center;padding:34px 28px;border-radius:30px;
-      background:rgba(255,250,242,.1);border:1px solid rgba(255,238,207,.28);
-      box-shadow:0 30px 90px rgba(0,0,0,.36);backdrop-filter:blur(16px);
+      width:min(420px,100%);
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      padding:26px;
     }
-    .gate-badge{width:82px;height:82px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:linear-gradient(135deg,#f6d692,#c84b31);font-size:34px;box-shadow:0 14px 30px rgba(0,0,0,.24)}
-    .gate h1{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:0 0 8px;letter-spacing:-.03em}
-    .gate p{margin:0 0 20px;color:#ecd8bd;line-height:1.55}
-    .gate-row{display:flex;gap:10px;background:#fff;border-radius:18px;padding:8px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-    .gate input{min-width:0;flex:1;border:0;padding:13px 12px;font-size:16px;outline:0;background:transparent;color:#2d201b}
-    .gate button{border:0;border-radius:14px;padding:0 18px;background:linear-gradient(135deg,var(--spice),var(--gold));color:#fff;font-weight:850;cursor:pointer}
-    .error{height:20px;margin:13px 0 0;color:#ffd1bd;font-size:14px}
-    .wrap{position:relative;max-width:1120px;margin:0 auto;padding:34px 18px 56px}
-    .hero{
-      position:relative;overflow:hidden;border-radius:36px;padding:42px;
-      background:linear-gradient(135deg,rgba(44,29,22,.96),rgba(130,59,31,.9)),url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=70') center/cover;
-      color:#fff7e8;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.28)
+    .gate-title{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:20px;font-weight:700}
+    .gate-icon{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;background:#238636;color:#fff}
+    .gate-card p{margin:0 0 18px;color:var(--muted);line-height:1.55}
+    .gate-row{display:flex;gap:8px}
+    .gate input{
+      flex:1;min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;color:var(--text);
+      padding:11px 12px;font-size:15px;outline:none;
     }
-    .hero:after{content:"";position:absolute;inset:auto -20% -55% 35%;height:260px;background:radial-gradient(circle,rgba(255,202,108,.35),transparent 68%);transform:rotate(-8deg)}
-    .kicker{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-weight:850;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:#ffe8b8}
-    .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,7vw,82px);line-height:.9;margin:22px 0 16px;letter-spacing:-.06em;max-width:820px}
-    .hero p{max-width:760px;margin:0;color:#f5dfc4;font-size:18px;line-height:1.65}
-    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);font-weight:800;color:#fff4df}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:34px 0 18px}
-    .section-head h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:34px;letter-spacing:-.04em}
-    .section-head p{margin:0;color:var(--muted);max-width:520px}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .card.featured{min-height:100%;display:flex;flex-direction:column}
-    .card.featured .actions{margin-top:auto}
-    .card{position:relative;overflow:hidden;border-radius:30px;background:var(--card);border:1px solid var(--line);box-shadow:var(--soft);padding:24px;transition:.22s transform,.22s box-shadow}
-    .card:hover{transform:translateY(-3px);box-shadow:0 20px 48px rgba(69,39,20,.16)}
-    .card:before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--spice),var(--gold),var(--leaf))}
-    .icon{width:62px;height:62px;border-radius:20px;display:grid;place-items:center;font-size:30px;background:#fff0d3;border:1px solid #efd7ae;margin-bottom:18px;box-shadow:0 10px 24px rgba(140,82,33,.12)}
-    .card h3{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1;margin:0 0 10px;letter-spacing:-.04em}
-    .card p{margin:0;color:#6d5d55;line-height:1.58}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
-    .tag{font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em;padding:7px 10px;border-radius:999px;background:#fff4df;color:#8a3a26;border:1px solid #efd8b9}
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:15px;background:var(--ink);color:#fff;text-decoration:none;font-weight:850;box-shadow:0 10px 24px rgba(36,25,20,.16)}
-    .btn.secondary{background:#fff;border:1px solid var(--line);color:var(--ink);box-shadow:none}
-    .mini{margin-top:26px;background:rgba(255,255,255,.66);border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:var(--soft)}
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    th,td{padding:14px 16px;text-align:left;border-bottom:1px solid #efdfc9;vertical-align:top}
-    th{background:#fff3dc;color:#6a3d27;text-transform:uppercase;font-size:12px;letter-spacing:.07em}
-    tr:last-child td{border-bottom:0}
-    td a{font-weight:850;color:#9d2f25;text-decoration:none}
-    .footer{margin-top:24px;text-align:center;color:#826d61;font-size:13px}
-    @media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:780px){.hero{padding:30px 22px;border-radius:28px}.grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.gate-row{display:block}.gate button{width:100%;height:44px;margin-top:6px}}
+    .gate input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #1f6feb33}
+    .gate button{border:0;border-radius:8px;background:#238636;color:white;font-weight:700;padding:0 16px;cursor:pointer}
+    .gate button:hover{background:#2ea043}
+    .error{height:20px;margin:12px 0 0;color:#ffb4ad;font-size:13px}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px 48px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#238636;color:#fff;font-size:18px;box-shadow:0 0 0 1px #ffffff1a inset}
+    h1{margin:0;font-size:22px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px;margin-left:4px}
+    .meta{color:var(--muted);font-size:13px}
+    .pathbar{
+      display:flex;align-items:center;gap:8px;margin-bottom:12px;color:var(--muted);font-size:14px;
+    }
+    .crumb{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px 10px;color:var(--text);font-weight:600}
+    .filebox{
+      background:var(--panel-2);
+      border:1px solid var(--line);
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 10px 35px rgba(0,0,0,.18);
+    }
+    .file-head,.file-row{
+      display:grid;
+      grid-template-columns: minmax(280px,1fr) 170px 170px;
+      align-items:center;
+      min-height:48px;
+      border-bottom:1px solid var(--line-soft);
+    }
+    .file-head{background:var(--panel);color:var(--muted);font-size:13px;font-weight:600}
+    .file-head div,.file-row div{padding:0 16px}
+    .file-row{transition:background .14s ease,color .14s ease}
+    .file-row:last-child{border-bottom:0}
+    .file-row:hover{background:var(--hover)}
+    .name{display:flex;align-items:center;gap:11px;min-width:0;font-weight:500}
+    .file-icon{width:22px;height:22px;display:grid;place-items:center;color:#ffb86c;font-size:18px;flex:0 0 auto}
+    .name span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .date,.type{color:var(--muted);font-size:13px;white-space:nowrap}
+    .open{color:var(--accent)}
+    .open:hover{text-decoration:underline}
+    .note{
+      margin-top:14px;color:var(--muted);font-size:13px;line-height:1.55;
+      border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel);
+    }
+    .note code{color:#d2a8ff;background:#6e40c91f;border:1px solid #6e40c944;border-radius:5px;padding:2px 5px}
+    @media(max-width:720px){
+      .topbar{align-items:flex-start;flex-direction:column}
+      .file-head{display:none}
+      .file-row{grid-template-columns:1fr;gap:4px;padding:12px 0;min-height:auto}
+      .file-row div{padding:0 14px}
+      .date,.type{padding-left:47px!important}
+      .type{display:none}
+    }
   </style>
 </head>
 <body>
-  <section id="gate" class="gate" aria-label="Password required">
+  <section class="gate" id="gate" aria-label="Password gate">
     <div class="gate-card">
-      <div class="gate-badge">KL</div>
-      <h1>W27 KL Guides</h1>
-      <p>Private travel notebook. Enter the password to open the guide index.</p>
-      <div class="gate-row">
-        <input id="pw" type="password" placeholder="Enter password" aria-label="Password" />
-        <button id="unlock" type="button">Open</button>
-      </div>
-      <div id="err" class="error"></div>
+      <div class="gate-title"><div class="gate-icon">🔐</div><span>Protected folder</span></div>
+      <p>Enter the password to open the W27 travel file directory.</p>
+      <form class="gate-row" id="passwordForm">
+        <input id="password" type="password" placeholder="Password" autocomplete="current-password" autofocus />
+        <button type="submit">Open</button>
+      </form>
+      <div class="error" id="error"></div>
     </div>
   </section>
 
   <main class="wrap" id="content" hidden>
-    <section class="hero">
-      <div class="kicker">🇲🇾 Kuala Lumpur · W27 notebook</div>
-      <h1>KL Food & Wellness Trail</h1>
-      <p>A compact homepage for your Kuala Lumpur guides — covering KL street-food discovery, Melaka food-blog notes, and shortlisted dental clinics around Kotaraya.</p>
-      <div class="meta">
-        <span class="pill">🍜 KL food trail</span>
-        <span class="pill">🥘 Melaka food blog</span>
-        <span class="pill">🦷 Dental shortlist</span>
-        <span class="pill">📍 Google Maps ready</span>
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-icon">🗂️</div>
+        <div>
+          <h1>W27 Travel Files <span class="badge">Public</span></h1>
+          <div class="meta">Static GitHub Pages directory</div>
+        </div>
       </div>
-    </section>
-
-    <div class="section-head">
-      <div>
-        <h2>Available pages</h2>
-        <p>Upload this <b>index.html</b> together with the three HTML files below into the same GitHub repository root folder.</p>
-      </div>
+      <div class="meta">4 HTML files</div>
     </div>
 
-    <section class="grid three">
-      <article class="card featured">
-        <div class="icon">🍜</div>
-        <h3>KL Food Tour Directory</h3>
-        <p>Food-blog style guide covering Kedai Mamak Husin, MON Chinese Beef Roti, Damascus, nasi lemak, durian and Jalan Alor.</p>
-        <div class="tags"><span class="tag">Street food</span><span class="tag">Reviews</span><span class="tag">Maps</span></div>
-        <div class="actions">
-          <a class="btn" href="W27_KL_Food_Tour_Directory.html">Open page</a>
-          <a class="btn secondary" href="W27_KL_Food_Tour_Directory.html" target="_blank" rel="noopener">New tab</a>
-        </div>
-      </article>
+    <div class="pathbar">
+      <span class="crumb">main</span>
+      <span>/</span>
+      <span class="crumb">root</span>
+    </div>
 
-      <article class="card featured">
-        <div class="icon">🥘</div>
-        <h3>W27 Melaka Food Blog</h3>
-        <p>Melaka eating guide with Nyonya dishes, local favourites, dessert stops, and practical food-trail notes in a warm blog layout.</p>
-        <div class="tags"><span class="tag">Melaka eats</span><span class="tag">Food blog</span><span class="tag">Travel notes</span></div>
-        <div class="actions">
-          <a class="btn" href="W27_Melaka_Food_Blog.html">Open page</a>
-          <a class="btn secondary" href="W27_Melaka_Food_Blog.html" target="_blank" rel="noopener">New tab</a>
-        </div>
-      </article>
+    <section class="filebox" aria-label="File list">
+      <div class="file-head">
+        <div>Name</div>
+        <div>Date modified</div>
+        <div>Type</div>
+      </div>
 
-      <article class="card featured">
-        <div class="icon">🦷</div>
-        <h3>W27 KL Dental</h3>
-        <p>Compact shortlist of five well-reviewed dental clinics around Kotaraya, with Google Maps links, estimated distance, review notes and indicative prices.</p>
-        <div class="tags"><span class="tag">Kotaraya</span><span class="tag">Clinic shortlist</span><span class="tag">Price guide</span></div>
-        <div class="actions">
-          <a class="btn" href="W27_KL_Dental.html">Open page</a>
-          <a class="btn secondary" href="W27_KL_Dental.html" target="_blank" rel="noopener">New tab</a>
-        </div>
-      </article>
+      <a class="file-row" href="index.html">
+        <div class="name"><span class="file-icon">🦁</span><span class="open">index</span></div>
+        <div class="date">4/7/2026 12:25 pm</div>
+        <div class="type">HTML Document</div>
+      </a>
+
+      <a class="file-row" href="W27_KL_Dental.html">
+        <div class="name"><span class="file-icon">🦁</span><span class="open">W27_KL_Dental</span></div>
+        <div class="date">4/7/2026 12:51 pm</div>
+        <div class="type">HTML Document</div>
+      </a>
+
+      <a class="file-row" href="W27_KL_Food_Tour_Directory.html">
+        <div class="name"><span class="file-icon">🦁</span><span class="open">W27_KL_Food_Tour_Directory</span></div>
+        <div class="date">4/7/2026 12:18 pm</div>
+        <div class="type">HTML Document</div>
+      </a>
+
+      <a class="file-row" href="W27_Melaka_Food_Blog.html">
+        <div class="name"><span class="file-icon">🦁</span><span class="open">W27_Melaka_Food_Blog</span></div>
+        <div class="date">4/7/2026</div>
+        <div class="type">HTML Document</div>
+      </a>
     </section>
 
-    <section class="mini" aria-label="File checklist">
-      <table>
-        <thead><tr><th>File</th><th>Purpose</th><th>Link path</th></tr></thead>
-        <tbody>
-          <tr><td><b>index.html</b></td><td>Password-gated homepage / directory.</td><td>Homepage</td></tr>
-          <tr><td><b>W27_KL_Dental.html</b></td><td>Dental clinic shortlist around Kotaraya, KL.</td><td><a href="W27_KL_Dental.html">Open</a></td></tr>
-          <tr><td><b>W27_KL_Food_Tour_Directory.html</b></td><td>KL food trail blog guide.</td><td><a href="W27_KL_Food_Tour_Directory.html">Open</a></td></tr>
-          <tr><td><b>W27_Melaka_Food_Blog.html</b></td><td>Melaka food blog and eating guide.</td><td><a href="W27_Melaka_Food_Blog.html">Open</a></td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <p class="footer">Password gate is suitable for casual privacy only. For true protection, use server-side access control.</p>
+    <div class="note">
+      This is a secure file manager</code>.
+    </div>
   </main>
 
   <script>
-    (function(){
-      const PASS = 'KL2026';
-      const gate = document.getElementById('gate');
-      const content = document.getElementById('content');
-      const pw = document.getElementById('pw');
-      const err = document.getElementById('err');
-      const btn = document.getElementById('unlock');
-      function openSite(){
-        if(pw.value.trim() === PASS){
-          sessionStorage.setItem('kl_w27_open','1');
-          gate.hidden = true;
-          content.hidden = false;
-        }else{
-          err.textContent = 'Incorrect password. Please try again.';
-          pw.select();
-        }
+    const PASSWORD = 'KL2026';
+    const gate = document.getElementById('gate');
+    const content = document.getElementById('content');
+    const form = document.getElementById('passwordForm');
+    const password = document.getElementById('password');
+    const error = document.getElementById('error');
+
+    function unlock(){
+      gate.hidden = true;
+      content.hidden = false;
+      sessionStorage.setItem('w27_unlocked','true');
+    }
+
+    if(sessionStorage.getItem('w27_unlocked') === 'true') unlock();
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(password.value === PASSWORD){
+        unlock();
+      }else{
+        error.textContent = 'Incorrect password. Please try again.';
+        password.select();
       }
-      if(sessionStorage.getItem('kl_w27_open') === '1'){
-        gate.hidden = true;
-        content.hidden = false;
-      }
-      btn.addEventListener('click', openSite);
-      pw.addEventListener('keydown', function(e){ if(e.key === 'Enter') openSite(); });
-      setTimeout(function(){ if(!gate.hidden) pw.focus(); }, 300);
-    })();
+    });
   </script>
 </body>
 </html>
