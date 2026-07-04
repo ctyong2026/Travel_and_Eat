@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KL Food Tour Blog Guide — 24 Hours in Kuala Lumpur</title>
+  <style>
+    :root{
+      --ink:#241914;
+      --muted:#725f55;
+      --paper:#fffdf8;
+      --card:#fffaf0;
+      --cream:#fff4dc;
+      --line:#ead7bd;
+      --spice:#c84b31;
+      --chilli:#9d2f25;
+      --turmeric:#e1a13a;
+      --leaf:#2f7d55;
+      --sky:#235d8c;
+      --charcoal:#2b211d;
+      --shadow:0 22px 60px rgba(82,45,24,.14);
+      --soft-shadow:0 12px 28px rgba(82,45,24,.09);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height:1.58;
+      background:
+        radial-gradient(circle at 10% -5%, rgba(225,161,58,.28), transparent 30%),
+        radial-gradient(circle at 90% 2%, rgba(200,75,49,.18), transparent 34%),
+        linear-gradient(180deg,#fff6e7 0,#fffdf8 460px,#fff9ee 100%);
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(88,50,22,.18) 1px, transparent 0);
+      background-size:28px 28px;
+      mask-image:linear-gradient(180deg,#000 0,transparent 78%);
+    }
+    a{color:inherit}
+    .page{max-width:1180px;margin:0 auto;padding:30px 20px 70px;position:relative}
+
+    .hero{
+      min-height:420px;
+      border-radius:34px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(120deg, rgba(40,25,18,.84), rgba(111,48,26,.66)),
+        url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1800&q=80") center/cover;
+      border:1px solid rgba(255,255,255,.45);
+      color:#fff;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      right:-90px;bottom:-120px;width:360px;height:360px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,196,86,.45), rgba(255,196,86,.03) 64%, transparent 66%);
+    }
+    .hero-inner{position:relative;z-index:2;max-width:820px;padding:48px 44px 40px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:9px;
+      padding:8px 13px;border:1px solid rgba(255,255,255,.38);
+      border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);
+      font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
+    }
+    .hero h1{font-family:Georgia,"Times New Roman",serif;font-weight:800;font-size:clamp(38px,6vw,76px);line-height:.94;margin:22px 0 16px;letter-spacing:-.04em;text-wrap:balance}
+    .subtitle{font-size:18px;max-width:760px;margin:0;color:rgba(255,255,255,.9)}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.92);color:#432716;font-size:13px;font-weight:850;box-shadow:0 8px 22px rgba(0,0,0,.11)}
+    .pill a{text-decoration:none;color:#7b2b1f}
+    .stamp{
+      position:absolute;right:32px;top:32px;z-index:2;
+      width:128px;height:128px;border-radius:50%;display:grid;place-items:center;text-align:center;
+      border:2px dashed rgba(255,255,255,.72);background:rgba(255,250,240,.16);backdrop-filter:blur(8px);
+      font-family:Georgia,"Times New Roman",serif;font-weight:800;line-height:1.03;transform:rotate(8deg);
+    }
+    .stamp span{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.12em;font-family:Inter,Arial,sans-serif}
+
+    .intro-card{
+      display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch;
+      margin:-52px 26px 28px;position:relative;z-index:5;
+    }
+    .note-panel,.quick-panel{background:rgba(255,253,248,.96);border:1px solid var(--line);border-radius:26px;box-shadow:var(--soft-shadow);padding:22px}
+    .note-panel h2,.quick-panel h2{font-family:Georgia,"Times New Roman",serif;margin:0 0 8px;font-size:25px;letter-spacing:-.02em}
+    .note-panel p,.quick-panel p{margin:0;color:var(--muted)}
+    .quick-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .quick-stat{border-radius:18px;background:#fff7e8;border:1px solid #f0d8b5;padding:13px}
+    .quick-stat strong{display:block;font-size:25px;color:var(--spice);line-height:1}
+    .quick-stat span{display:block;font-size:12px;color:var(--muted);font-weight:800;margin-top:5px}
+
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:36px 4px 16px}
+    .section-heading h2{font-family:Georgia,"Times New Roman",serif;font-size:34px;line-height:1;margin:0;letter-spacing:-.03em}
+    .section-heading p{margin:0;color:var(--muted);max-width:520px;font-size:14px;text-align:right}
+
+    .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .food-card{
+      position:relative;overflow:hidden;border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:var(--soft-shadow);
+      min-height:330px;display:flex;flex-direction:column;
+    }
+    .food-card:before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--spice),var(--turmeric),var(--leaf));opacity:.92}
+    .card-top{padding:20px 20px 12px;background:linear-gradient(180deg,#fff8e9,#fffdf8)}
+    .stop-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .stop-badge{display:inline-flex;align-items:center;gap:8px;font-weight:950;color:var(--chilli);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .stop-badge i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--chilli);color:#fff;font-style:normal;box-shadow:0 8px 20px rgba(157,47,37,.22)}
+    .cuisine{font-size:11px;font-weight:900;border-radius:999px;padding:6px 9px;background:#eff8f1;color:var(--leaf);white-space:nowrap}
+    .food-card h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.06;margin:0 0 8px;letter-spacing:-.02em}
+    .address{font-size:12.5px;color:var(--muted);margin:0}
+    .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1}
+    .taste{font-size:14px;color:#3c2b24;margin:0}
+    .review-box{border-left:4px solid var(--turmeric);background:#fff7e6;border-radius:14px;padding:11px 12px;color:#5f4a3e;font-size:13px}
+    .rating{display:flex;align-items:center;gap:8px;margin-bottom:4px;font-weight:900;color:#7d4b08}.stars{color:#d7951b;letter-spacing:1px}
+    .best{margin-top:auto;display:flex;gap:9px;align-items:flex-start;border-top:1px dashed #e4c8a3;padding-top:13px;color:var(--muted);font-size:13px}.best b{color:var(--ink)}
+    .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+    .btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;background:#eef5ff;color:#194f86;border:1px solid #cfe0f5}
+    .btn.review{background:#fff1e7;color:#8a3d1c;border-color:#f1ccb4}.btn.website{background:#edf8ef;color:#236743;border-color:#cde8d3}
+
+    .route-wrap{display:grid;grid-template-columns:.86fr 1.14fr;gap:20px;align-items:start;margin-top:20px}
+    .route-map{background:var(--charcoal);color:#fff;border-radius:30px;padding:26px;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow);position:sticky;top:18px;overflow:hidden}
+    .route-map:before{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:rgba(225,161,58,.22)}
+    .route-map h3{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1;margin:0 0 12px;position:relative}.route-map p{color:rgba(255,255,255,.76);margin:0 0 20px;position:relative}
+    .route-step{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;position:relative;margin:0 0 17px}
+    .route-step:not(:last-child):after{content:"";position:absolute;left:21px;top:45px;width:2px;height:calc(100% - 20px);background:rgba(255,255,255,.18)}
+    .route-step .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#7f2d1f;font-weight:950;box-shadow:0 8px 22px rgba(0,0,0,.18);z-index:2}
+    .route-step strong{display:block;color:#fff}.route-step span{display:block;color:rgba(255,255,255,.72);font-size:13px;margin-top:2px}
+
+    .table-wrap{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;margin-top:20px}
+    .toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#fff7e3,#fffdf8)}
+    .toolbar strong{font-family:Georgia,"Times New Roman",serif;font-size:21px}.toolbar span{font-size:12px;color:var(--muted);font-weight:700}
+    table{width:100%;border-collapse:collapse}thead th{background:#35241d;color:#fff;text-align:left;font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:13px;border-bottom:1px solid rgba(255,255,255,.08)}tbody td{vertical-align:top;padding:15px 13px;border-bottom:1px solid #f0dfc8;font-size:13.5px}tbody tr:nth-child(even){background:#fffaf1}tbody tr:hover{background:#fff1d8}.table-stop{width:62px}.mini-badge{display:inline-grid;place-items:center;width:33px;height:33px;border-radius:50%;background:var(--spice);color:#fff;font-weight:950}.place-cell strong{display:block;font-size:15px}.place-cell span{display:inline-block;margin-top:6px;font-size:11px;font-weight:900;color:var(--leaf);background:#ecf8ef;border-radius:999px;padding:4px 8px}.review-cell{min-width:260px}.addr-cell{min-width:220px;color:#4d3a31}.links-cell{min-width:155px}
+
+    .source-list{background:#fff;border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:var(--soft-shadow);margin-top:22px}.source-list h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;margin:0 0 12px}.source-list a{display:inline-block;margin:0 8px 9px 0;padding:8px 11px;border-radius:999px;background:#fff3e0;border:1px solid #edceb0;text-decoration:none;color:#76391d;font-size:12px;font-weight:900}
+    .footer{text-align:center;color:var(--muted);font-size:12px;margin:26px 0 0}
+
+    @media(max-width:980px){.intro-card,.route-wrap{grid-template-columns:1fr}.story-grid{grid-template-columns:1fr 1fr}.stamp{display:none}.route-map{position:relative;top:auto}.table-wrap{overflow-x:auto}table{min-width:1120px}.section-heading{display:block}.section-heading p{text-align:left;margin-top:6px}.hero-inner{padding:38px 28px 82px}.intro-card{margin:-58px 14px 24px}}
+    @media(max-width:640px){.page{padding:16px 12px 48px}.hero{border-radius:24px}.hero h1{font-size:42px}.subtitle{font-size:16px}.story-grid{grid-template-columns:1fr}.quick-list{grid-template-columns:1fr}.note-panel,.quick-panel{border-radius:22px}.section-heading h2{font-size:29px}.toolbar{display:block}.toolbar span{display:block;margin-top:4px}.food-card{border-radius:23px}}
+    @media print{body{background:#fff}body:before,.hero:after,.route-map:before{display:none}.page{max-width:none;padding:0}.hero,.food-card,.table-wrap,.route-map,.source-list,.note-panel,.quick-panel{box-shadow:none}.hero{color:#000;background:#fff;border:1px solid #aaa}.pill{box-shadow:none;border:1px solid #aaa}.route-map{background:#fff;color:#000}.route-map h3,.route-step strong{color:#000}.route-map p,.route-step span{color:#555}.route-step .dot{border:1px solid #777}.btn,.source-list a{text-decoration:none;color:#000;background:#fff;border:1px solid #999}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="stamp">KL<br><span>Food Trail</span></div>
+      <div class="hero-inner">
+        <div class="kicker">🍜 Kuala Lumpur street-food notebook</div>
+        <h1>24 Hours Eating Through KL</h1>
+        <p class="subtitle">A warmer, blog-style guide to your YouTube food-tour stops — with Google Maps links, review snapshots, route notes, and the dishes worth looking for.</p>
+        <div class="meta">
+          <span class="pill">🎥 <a href="https://www.youtube.com/watch?v=JdTLIf4BzXs" target="_blank" rel="noopener">Watch the source video</a></span>
+          <span class="pill">📍 Bukit Bintang · Jalan Alor · KL City Centre</span>
+          <span class="pill">🗓 Updated 4 Jul 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-card">
+      <article class="note-panel">
+        <h2>From smoky mamak grills to hand-pulled noodles</h2>
+        <p>This itinerary reads like a full-day KL appetite journey: start with crisp roti, move through mamak grills and Middle Eastern wraps, reset with nasi lemak, then let Jalan Alor, durian and a steaming bowl of noodles carry the night.</p>
+      </article>
+      <aside class="quick-panel">
+        <h2>Food-tour scorecard</h2>
+        <p>A compact snapshot before you dive into the stops.</p>
+        <div class="quick-list">
+          <div class="quick-stat"><strong>7</strong><span>linked stops</span></div>
+          <div class="quick-stat"><strong>5</strong><span>cuisine moods</span></div>
+          <div class="quick-stat"><strong>1</strong><span>day route</span></div>
+          <div class="quick-stat"><strong>KL</strong><span>street-food focus</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="section-heading">
+      <h2>The stops, like a food blog</h2>
+      <p>Each card keeps the practical data visible, but adds the warmth and flow of a travel-food article.</p>
+    </div>
+
+    <section class="story-grid">
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>1</i> Stop one</span><span class="cuisine">Indian–Malay mamak</span></div><h3>Kedai Mamak Husin</h3><p class="address">G4 & G5, Idaman Robertson, No. 2, Jalan Robertson, Bukit Bintang, 50150 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">Fresh naan, roti, kebabs and grilled chicken skewers arrive hot, smoky and sauce-ready — the kind of comforting late-night KL stop that rewards a relaxed appetite.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Positive public review tone</div>Reviewers often mention flavourful fried rice, filled naans, rotis, large portions, friendly service and affordable pricing.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kedai%20Mamak%20Husin%20G4%20G5%20Idaman%20Robertson%20Jalan%20Robertson%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn review" href="https://www.tripadvisor.com/Restaurant_Review-g298570-d17720410-Reviews-Kedai_Mamak_Husin-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🍢 <span><b>Best use:</b> Late-night opening stop or casual first meal near Robertson / Bukit Bintang.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>2</i> Stop two</span><span class="cuisine">Crispy stuffed roti</span></div><h3>MON Chinese Beef Roti</h3><p class="address">82, Jalan Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">A breakfast-style street snack with theatre: dough is stuffed with meat and onions, then fried until the outside turns crisp and the inside stays savoury.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Viral quick-bite appeal</div>Reviewers praise the crispy, flaky roti and the fun of watching the team prepare and fry each order.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=MON%20Chinese%20Beef%20Roti%2082%20Jalan%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn review" href="https://www.tripadvisor.com/Restaurant_Review-g298570-d27224254-Reviews-Restoran_Mon_Chinese_Beef_Roti-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🥟 <span><b>Best use:</b> Breakfast or mid-morning snack; go earlier if you want to avoid the viral queue.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>3</i> Stop three</span><span class="cuisine">Syrian / Middle Eastern</span></div><h3>Damascus Bukit Bintang</h3><p class="address">126, Jalan Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">Shawarma, kebab wraps, mezze and grilled meats bring a rich Middle Eastern layer to the KL food map — filling, saucy and easy to share.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Strong food reputation</div>Public reviews often highlight flavourful shawarma, mixed beef-and-chicken kebab wraps, lamb dishes, generous portions and polite service.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Damascus%20BBQ%20126%20Jalan%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn website" href="https://damascus.my/" target="_blank" rel="noopener">Website</a><a class="btn review" href="https://www.tripadvisor.com/Restaurant_Review-g298570-d17461399-Reviews-Damascus_BBQ-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🥙 <span><b>Best use:</b> Lunch or early dinner when you want a substantial savoury stop.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>4</i> Stop four</span><span class="cuisine">Malay comfort food</span></div><h3>100 Years Nasi Lemak KL</h3><p class="address">10, Jalan Galloway, Bukit Bintang, 50150 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">Coconut rice, sambal, ikan bilis, peanuts, cucumber and egg form the foundation; fried chicken, rendang and satay turn it into a full Malaysian comfort plate.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Strong nasi lemak recommendation</div>Food media praise the rich coconut rice, bright sambal, crisp ayam goreng berempah and broad menu in a century-old building setting.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=100%20Years%20Nasi%20Lemak%2010%20Jalan%20Galloway%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn review" href="https://sethlui.com/100-years-nasi-lemak-malaysia/" target="_blank" rel="noopener">★ Review</a></div><div class="best">🍚 <span><b>Best use:</b> Main local meal for a cleaner sit-down setting and classic Malaysian flavours.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>5</i> Stop five</span><span class="cuisine">Durian specialist</span></div><h3>Dury Dury Durian</h3><p class="address">No. 22, Jalan Tong Shin, Bukit Bintang, 50200 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">A durian-focused reset: Musang King, D24, Black Thorn and other varieties let you move from creamy-sweet to bold bittersweet in one tasting stop.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Specialist durian experience</div>Listings describe a major KL durian store with fresh durians, a themed dine-in concept and premium varieties.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dury%20Dury%2022%20Jalan%20Tong%20Shin%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn website" href="https://durydury.com/" target="_blank" rel="noopener">Website</a><a class="btn review" href="https://www.tripadvisor.com.sg/Restaurant_Review-g298570-d28151306-Reviews-Dury_Dury-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🌰 <span><b>Best use:</b> Mid-afternoon or post-dinner dessert stop, especially for a first tasting flight.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>6</i> Stop six</span><span class="cuisine">Night-market street</span></div><h3>Jalan Alor Night Market</h3><p class="address">Jalan Alor, Bukit Bintang, 50200 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">This is the atmosphere stop: grilled seafood, satay, noodles, fruits and desserts under neon lights, with a tourist-friendly buzz that still feels unmistakably KL.</p><div class="review-box"><div class="rating"><span class="stars">★★★★☆</span> Atmosphere-led experience</div>Recent reviews call it lively and worth visiting for the buzz and variety, while some locals find it touristy and pricier.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Jalan%20Alor%20Night%20Market%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn review" href="https://www.tripadvisor.com.sg/Attraction_Review-g298570-d1943478-Reviews-Jalan_Alor-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🌙 <span><b>Best use:</b> Evening walk-through; sample lightly, compare stalls, then sit down for one final dish.</span></div></div>
+      </article>
+
+      <article class="food-card">
+        <div class="card-top"><div class="stop-row"><span class="stop-badge"><i>7</i> Stop seven</span><span class="cuisine">Hand-pulled noodles</span></div><h3>Mee Tarik Restoran</h3><p class="address">36, Jalan Sultan, City Centre, 50000 Kuala Lumpur</p></div>
+        <div class="card-body"><p class="taste">A soothing final bowl: Lanzhou-style hand-pulled noodles in steaming soup, with beef noodle bowls, dumplings and China Muslim comfort dishes.</p><div class="review-box"><div class="rating"><span class="stars">★★★☆☆</span> Practical noodle stop</div>Tripadvisor lists it at 3.8/5 from a small review base; the official site emphasizes fresh, springy noodles and casual dining.</div><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Mee%20Tarik%20Restoran%2036%20Jalan%20Sultan%20Kuala%20Lumpur" target="_blank" rel="noopener">📍 Google Map</a><a class="btn website" href="https://meetarik.com.my/" target="_blank" rel="noopener">Website</a><a class="btn review" href="https://www.tripadvisor.com.sg/Restaurant_Review-g298570-d27184678-Reviews-Mee_Tarik_Restoran-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">★ Reviews</a></div><div class="best">🍜 <span><b>Best use:</b> Final warm bowl after Jalan Alor; verify the exact branch before routing.</span></div></div>
+      </article>
+    </section>
+
+    <div class="section-heading">
+      <h2>Suggested eating flow</h2>
+      <p>Built as an editorial day plan, not just a spreadsheet — useful for sharing with friends before the trip.</p>
+    </div>
+
+    <section class="route-wrap">
+      <aside class="route-map">
+        <h3>One-day route rhythm</h3>
+        <p>Keep breakfast crisp, lunch substantial, and night flexible. This avoids turning the day into one heavy meal after another.</p>
+        <div class="route-step"><div class="dot">AM</div><div><strong>MON Chinese Beef Roti</strong><span>Start with the viral crispy roti while appetite is clean.</span></div></div>
+        <div class="route-step"><div class="dot">PM</div><div><strong>Mamak · Damascus · Nasi Lemak</strong><span>Choose one or two bigger savoury anchors depending on group appetite.</span></div></div>
+        <div class="route-step"><div class="dot">NT</div><div><strong>Jalan Alor · Durian · Mee Tarik</strong><span>Let the night become a tasting walk, then end with fruit or a warm noodle bowl.</span></div></div>
+      </aside>
+
+      <section class="table-wrap">
+        <div class="toolbar"><strong>Practical table</strong><span>Addresses and review notes retained for planning, printing and checking on Google Maps.</span></div>
+        <table>
+          <thead><tr><th class="table-stop">Stop</th><th>Place</th><th>Google Address</th><th>Food Focus</th><th>Hyperlinks</th><th>Review Snapshot</th><th>Best Use</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mini-badge">1</span></td><td class="place-cell"><strong>Kedai Mamak Husin</strong><span>Indian–Malay mamak</span></td><td class="addr-cell">G4 & G5, Idaman Robertson, No. 2, Jalan Robertson, Bukit Bintang, 50150 Kuala Lumpur</td><td>Fresh naan, roti, kebabs, grilled chicken skewers and sauces.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kedai%20Mamak%20Husin%20G4%20G5%20Idaman%20Robertson%20Jalan%20Robertson%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn review" href="https://www.tripadvisor.com/Restaurant_Review-g298570-d17720410-Reviews-Kedai_Mamak_Husin-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Reviews</a></td><td class="review-cell">★★★★☆ Positive tone; flavourful food, large portions, friendly service.</td><td>Late-night or casual first meal.</td></tr>
+            <tr><td><span class="mini-badge">2</span></td><td class="place-cell"><strong>MON Chinese Beef Roti</strong><span>Crispy stuffed roti</span></td><td class="addr-cell">82, Jalan Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur</td><td>Beef or chicken roti fried crisp outside and juicy inside.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=MON%20Chinese%20Beef%20Roti%2082%20Jalan%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn review" href="https://www.tripadvisor.com/Restaurant_Review-g298570-d27224254-Reviews-Restoran_Mon_Chinese_Beef_Roti-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Reviews</a></td><td class="review-cell">★★★★☆ Crispy, flaky and queue-worthy.</td><td>Breakfast or mid-morning snack.</td></tr>
+            <tr><td><span class="mini-badge">3</span></td><td class="place-cell"><strong>Damascus Bukit Bintang</strong><span>Syrian / Middle Eastern</span></td><td class="addr-cell">126, Jalan Bukit Bintang, Bukit Bintang, 55100 Kuala Lumpur</td><td>Shawarma, kebab wraps, mezze and grilled meats.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Damascus%20BBQ%20126%20Jalan%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn website" href="https://damascus.my/" target="_blank" rel="noopener">Website</a></td><td class="review-cell">★★★★☆ Flavourful shawarma, generous portions, polite service.</td><td>Filling lunch or early dinner.</td></tr>
+            <tr><td><span class="mini-badge">4</span></td><td class="place-cell"><strong>100 Years Nasi Lemak KL</strong><span>Malay comfort food</span></td><td class="addr-cell">10, Jalan Galloway, Bukit Bintang, 50150 Kuala Lumpur</td><td>Coconut rice, sambal, anchovies, peanuts, egg and sides.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=100%20Years%20Nasi%20Lemak%2010%20Jalan%20Galloway%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn review" href="https://sethlui.com/100-years-nasi-lemak-malaysia/" target="_blank" rel="noopener">Review</a></td><td class="review-cell">★★★★☆ Rich coconut rice, bright sambal, crisp ayam goreng.</td><td>Classic Malaysian main meal.</td></tr>
+            <tr><td><span class="mini-badge">5</span></td><td class="place-cell"><strong>Dury Dury Durian</strong><span>Durian specialist</span></td><td class="addr-cell">No. 22, Jalan Tong Shin, Bukit Bintang, 50200 Kuala Lumpur</td><td>Musang King, D24, Black Thorn and other fresh durian varieties.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Dury%20Dury%2022%20Jalan%20Tong%20Shin%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn website" href="https://durydury.com/" target="_blank" rel="noopener">Website</a></td><td class="review-cell">★★★★☆ Fresh premium durians and themed dine-in concept.</td><td>Durian dessert or tasting flight.</td></tr>
+            <tr><td><span class="mini-badge">6</span></td><td class="place-cell"><strong>Jalan Alor Night Market</strong><span>Food street</span></td><td class="addr-cell">Jalan Alor, Bukit Bintang, 50200 Kuala Lumpur</td><td>Grilled seafood, satay, noodles, snacks, fruit and desserts.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Jalan%20Alor%20Night%20Market%20Bukit%20Bintang%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn review" href="https://www.tripadvisor.com.sg/Attraction_Review-g298570-d1943478-Reviews-Jalan_Alor-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Reviews</a></td><td class="review-cell">★★★★☆ Lively, varied, atmospheric; can feel touristy.</td><td>Evening walk-through.</td></tr>
+            <tr><td><span class="mini-badge">7</span></td><td class="place-cell"><strong>Mee Tarik Restoran</strong><span>Hand-pulled noodles</span></td><td class="addr-cell">36, Jalan Sultan, City Centre, 50000 Kuala Lumpur</td><td>Lanzhou-style hand-pulled noodles, beef bowls and dumplings.</td><td class="links-cell"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Mee%20Tarik%20Restoran%2036%20Jalan%20Sultan%20Kuala%20Lumpur" target="_blank" rel="noopener">Map</a> <a class="btn website" href="https://meetarik.com.my/" target="_blank" rel="noopener">Website</a></td><td class="review-cell">★★★☆☆ Practical casual noodle stop; springy noodles.</td><td>Final warm bowl.</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section class="source-list">
+      <h3>Reference links used</h3>
+      <a href="https://www.youtube.com/watch?v=JdTLIf4BzXs" target="_blank" rel="noopener">YouTube video</a>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g298570-d17720410-Reviews-Kedai_Mamak_Husin-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Kedai Mamak Husin</a>
+      <a href="https://thesmartlocal.my/mon-chinese-beef-roti/" target="_blank" rel="noopener">MON Chinese Beef Roti address</a>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g298570-d17461399-Reviews-Damascus_BBQ-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Damascus reviews</a>
+      <a href="https://sethlui.com/100-years-nasi-lemak-malaysia/" target="_blank" rel="noopener">100 Years Nasi Lemak</a>
+      <a href="https://duriannearme.com.my/dury-dury-2/" target="_blank" rel="noopener">Dury Dury address</a>
+      <a href="https://www.tripadvisor.com.sg/Attraction_Review-g298570-d1943478-Reviews-Jalan_Alor-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Jalan Alor reviews</a>
+      <a href="https://www.tripadvisor.com.sg/Restaurant_Review-g298570-d27184678-Reviews-Mee_Tarik_Restoran-Kuala_Lumpur_Wilayah_Persekutuan.html" target="_blank" rel="noopener">Mee Tarik reviews</a>
+    </section>
+
+    <p class="footer">Created as a food-blog style HTML guide for planning and sharing. Ratings, review counts and opening hours can change; verify on Google Maps before visiting.</p>
+  </main>
+</body>
+</html>
